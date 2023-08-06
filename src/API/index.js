@@ -5,6 +5,7 @@ export const getNotes = async (data) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify({
         tablename: data,
