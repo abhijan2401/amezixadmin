@@ -1,6 +1,6 @@
 export const getNotes = async (data) => {
   try {
-    const response = await fetch("http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/getAllData", {
+    const response = await fetch("https://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/getAllData", {
       method: "POST",
       headers: {
         Accept: "application/json",
