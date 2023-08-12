@@ -1,0 +1,1 @@
+export const BASE_URL="http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001"

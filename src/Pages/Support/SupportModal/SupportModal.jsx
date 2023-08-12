@@ -1,21 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SupportModal.css";
 
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
+import { callgetMessage } from "../../../API/chats/getChatMessages";
+import { createnewMessage } from "../../../API/chats/createNewMessage";
 
 const SupportModal = ({ closeSupportModal }) => {
+  const [admin,setAdmin]=useState('TlLlCw1GqVUCdw1Hqm2omRJjVpw1')
   const [useChat, setuserChat] = useState("");
 
   const [chat, setChat] = useState([]);
-  const handleChat = () => {
-    const newMessage = {
-      type: "Systemuser",
-      text: useChat,
-    };
-    setChat([...chat, newMessage]);
+
+  const handleChat=async()=>{
+    if(useChat==='')
+        return
+    const messageObj={
+        roomid:'TlLlCw1GqVUCdw1Hqm2omRJjVpw1##c8c61d82-b8e7-49c0-9751-e2ae7a8d6091',
+        message:useChat,
+        messagedate:new Date().toString(),
+        recieverid:'c8c61d82-b8e7-49c0-9751-e2ae7a8d6091',
+        senderid:admin
+
+    }
+    await createnewMessage(messageObj)
+    setChat([...chat,messageObj]);
     setuserChat("");
-  };
+}
+    useEffect(()=>{
+      getAllChats()
+    },[])
+
+    useEffect(()=>{
+      setTimeout(() => {
+        getAllChats();
+      }, 3000);
+    },[])
+
+    const getAllChats=async()=>{
+      try {
+        const messages=await callgetMessage("TlLlCw1GqVUCdw1Hqm2omRJjVpw1##c8c61d82-b8e7-49c0-9751-e2ae7a8d6091");
+        setChat([...messages.data])
+      } catch (error) {
+        console.log(error);
+      }
+    }
   return (
     <>
       <div className="support-modal-container">
@@ -48,24 +77,17 @@ const SupportModal = ({ closeSupportModal }) => {
               <hr />
               <div className="chat-container">
                 <div className="chat-content">
-                  <div className="chat-to-system">
-                    <h5>Sir Where is my order</h5>
-                  </div>
-                  <div className="chat-to-system">
-                    <h5>Sir Where is my order</h5>
-                  </div>
-
-                  {/* Mapping of Right-hand-Side Chats */}
-                  {chat.map((message, index) => {
-                    return (
-                      <>
-                        <div className="user-chat" key={index}>
-                          <h5>{message.text}</h5>
-                        </div>
-                      </>
-                    );
-                  })}
+                  {
+                    chat.length>0 &&
+                    chat.reverse().map((message,index)=>(
+                      <div className="user-chat" style={{justifyContent: message.senderid ===admin ? 'flex-end':"flex-start"}}
+                      key={index}>
+                        <h5 style={{alignSelf:"flex-start"}}>{message.message}</h5>
+                      </div>
+                    ))
+                  }
                 </div>
+
                 <div className="msg-box">
                   <div className="msg-area">
                     <textarea
