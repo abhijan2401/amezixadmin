@@ -7,7 +7,8 @@ import { callgetMessage } from "../../../API/chats/getChatMessages";
 import { createnewMessage } from "../../../API/chats/createNewMessage";
 
 const SupportModal = ({ closeSupportModal }) => {
-  const [admin,setAdmin]=useState('TlLlCw1GqVUCdw1Hqm2omRJjVpw1')
+  const [admin,setAdmin]=useState('admin_chat');
+  
   const [useChat, setuserChat] = useState("");
 
   const [chat, setChat] = useState([]);
@@ -16,10 +17,10 @@ const SupportModal = ({ closeSupportModal }) => {
     if(useChat==='')
         return
     const messageObj={
-        roomid:'TlLlCw1GqVUCdw1Hqm2omRJjVpw1##c8c61d82-b8e7-49c0-9751-e2ae7a8d6091',
+        roomid:'ZD8YZmE9ChPrntzJMZUt6XANMPz1##admin_chat',
         message:useChat,
         messagedate:new Date().toString(),
-        recieverid:'c8c61d82-b8e7-49c0-9751-e2ae7a8d6091',
+        recieverid:'ZD8YZmE9ChPrntzJMZUt6XANMPz1',
         senderid:admin
 
     }
@@ -32,14 +33,15 @@ const SupportModal = ({ closeSupportModal }) => {
     },[])
 
     useEffect(()=>{
-      setTimeout(() => {
+      setInterval(() => {
+        console.log("Helo")
         getAllChats();
-      }, 3000);
+      }, 5000);
     },[])
 
     const getAllChats=async()=>{
       try {
-        const messages=await callgetMessage("TlLlCw1GqVUCdw1Hqm2omRJjVpw1##c8c61d82-b8e7-49c0-9751-e2ae7a8d6091");
+        const messages=await callgetMessage("ZD8YZmE9ChPrntzJMZUt6XANMPz1##admin_chat");
         setChat([...messages.data])
       } catch (error) {
         console.log(error);
