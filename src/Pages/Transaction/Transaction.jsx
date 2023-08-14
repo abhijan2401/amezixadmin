@@ -38,7 +38,7 @@ const Transaction = () => {
               <ArrowBackIcon
               
                 // style={{ fontSize: "25px" }}
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/amezixadmin")}
                 id="backToPanel"
               />
               <span onClick={() => setPage("transactions")}>Transation</span>

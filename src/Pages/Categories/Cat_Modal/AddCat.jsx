@@ -133,7 +133,7 @@ const AddCat = ({ closeModal }) => {
                   Save
                 </button>
               </div>
-              <button onClick={getDownloadUrl}>tbn</button>
+              {/* <button onClick={getDownloadUrl}>tbn</button> */}
               {/* <input type="file" id='file_55' onChange={handleImageValue} /> */}
             </div>
           </div>

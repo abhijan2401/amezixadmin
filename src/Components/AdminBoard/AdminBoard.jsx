@@ -90,12 +90,12 @@ const AdminBoard = () => {
             <PaidIcon style={{ fontSize: "25px" }} />{" "}
             <span onClick={() => setActive("Transaction")}>Transation</span>{" "}
           </p>
-          <p className="Sub_Admin">
+          {/* <p className="Sub_Admin">
             <SupervisorAccountIcon style={{ fontSize: "25px" }} />{" "}
             <span onClick={() => setActive("SubAdmin")} className="btn">
               Sub Admin
             </span>{" "}
-          </p>
+          </p> */}
           <p className="Banner">
             <PagesIcon style={{ fontSize: "25px" }} />{" "}
             <span onClick={() => setActive("Banner")} className="btn">
@@ -137,7 +137,7 @@ const AdminBoard = () => {
           {active === "User" && <User />}
           {active === "Drivers" && <Drivers />}
           {active === "Transaction" && navigate("/Transaction")}
-          {active === "SubAdmin" && <SubAdmin />}
+          {/* {active === "SubAdmin" && <SubAdmin />} */}
           {active === "Banner" && <Banner />}
           {active === "Notification" && <Notification />}
           {active === "Support" && <Support />}
