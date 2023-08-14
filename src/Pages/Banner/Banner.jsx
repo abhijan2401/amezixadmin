@@ -20,17 +20,18 @@ const Banner = ({ userCount, storeCount }) => {
   const [bannerData, setBannerData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedData, setSelectedData] = useState(null);
+  const fetchData = async () => {
+    console.log("i am called")
+    try {
+      const response = await getNotes("banner");
+      setBannerData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getNotes("banner");
-        setBannerData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchData();
   }, []);
 
@@ -47,19 +48,15 @@ const Banner = ({ userCount, storeCount }) => {
   };
 
   // Edit Table
-  const editTable =async(id) => {
-    let newdata =  bannerData.find((element) => {
+  const editTable = async (id) => {
+    let newdata = bannerData.find((element) => {
       return element.id === id;
     });
     setSelectedData(newdata);
     console.log(newdata);
     setEditModal(true);
-    // try {
-    //   const response = await getNotes("banner");
-    //   setBannerData(response.data);
-    // } catch (error) {
-    //   console.error("Error fetching data:", error);
-    // }
+    await fetchData();
+    console.log("i am called2")
   };
 
   return (
