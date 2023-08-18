@@ -28,13 +28,13 @@
     /* padding-bottom: 170px; */
 }
 .User-list th{
-    font-size: 20px;
+    font-size: 16px;
     padding: 15px;
     background-color: rgb(135, 197, 255);
 }
 .User-list td{
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
     padding: 10px;
     background-color: rgb(198, 223, 246);
 }
@@ -51,23 +51,23 @@
     margin-top: 20px;
     padding-bottom: 170px;
 }
-button{
+.Useraddnewbtn button{
     padding: 8px 25px;
-    font-size: 20px;
+    font-size: 18px;
     outline: none;
     border: none;
     border-radius: 3px;
-    background-color: rgba(94, 145, 247, 0.766);
+    background-color: #0091ffc9;
     transition: 0.3s;
     cursor: pointer;
     margin-right: 80px;
     display: flex;
     color: rgba(0, 0, 0, 0.852);
 }
- button:hover{
-    background-color: rgb(34, 105, 248);
+.Useraddnewbtn button:hover{
+    background-color: #0091ff;
 }
-.User-list img{
+.Useraddnewbtn img{
     height: 25px;
     width: 25px;
     margin-left: 10px;

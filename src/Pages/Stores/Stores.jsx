@@ -24,9 +24,9 @@ const Stores = () => {
   }, []);
   return (
     <div className="store-container">
-      <div className="categoriefilter">
+      {/* <div className="categoriefilter">
         <Filter />
-      </div>
+      </div> */}
       {loading ? (
         <Loader />
       ) : (

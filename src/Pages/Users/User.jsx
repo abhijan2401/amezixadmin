@@ -25,9 +25,9 @@ const User = () => {
   }, []);
   return (
     <div className="User-container">
-      <div className="categoriefilter">
+      {/* <div className="categoriefilter">
         <Filter />
-      </div>
+      </div> */}
       {loading ? (
         <Loader />
       ) : (

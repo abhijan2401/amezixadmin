@@ -30,9 +30,9 @@ const Notification = () => {
 
   return (
     <div>
-      <div className="Notificationcategoriefilter">
+      {/* <div className="Notificationcategoriefilter">
         <Filter />
-      </div>
+      </div> */}
       {loading ? (
         <Loader />
       ) : (

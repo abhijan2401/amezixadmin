@@ -124,7 +124,7 @@ const AdminBoard = () => {
       </div>
       <div className="Container">
         <div className="header">
-          <button className="logout-btn">Logout</button>
+          {/* <button className="logout-btn">Logout</button> */}
           <AccountCircleIcon
             style={{ fontSize: "60px", marginRight: "20px", cursor: "pointer" }}
           />

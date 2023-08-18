@@ -26,13 +26,13 @@
     padding-bottom: 70px;
 }
 .transaction-list th{
-    font-size: 20px;
+    font-size: 16px;
     padding: 15px;
     background-color: rgb(135, 197, 255);
 }
 .transaction-list td{
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
     padding: 10px;
     background-color: rgb(198, 223, 246);
 }

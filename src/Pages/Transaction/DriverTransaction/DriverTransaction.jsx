@@ -5,7 +5,7 @@ import Filter from '../../../Components/Filter/Filter'
 const DriverTransaction = () => {
   return (
     <div>
-      <div className="transactioncategoriefilter"><Filter/></div>
+      {/* <div className="transactioncategoriefilter"><Filter/></div> */}
       <div className="drivertransaction-content" id="list">
           <div
             className="drivertransaction"

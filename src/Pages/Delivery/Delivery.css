@@ -9,20 +9,24 @@
     padding-bottom: 150px;
 }
 .delivery-list th{
-    font-size: 20px;
+    font-size: 16px;
     padding: 15px;
     background-color: rgb(135, 197, 255);
 }
 .delivery-list td{
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
     padding: 10px;
     background-color: rgb(198, 223, 246);
 }
 select{
     outline: none;
     border: none;
-    padding: 5%;
-    letter-spacing: 1.2px;
+    padding: 2%;
     background-color: rgb(198, 223, 246);
+}
+#deliveryboy_btn{
+    margin: 10px;
+    font-size: 12px;
+    padding:5px 8px;
 }

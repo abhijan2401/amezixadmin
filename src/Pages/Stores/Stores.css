@@ -26,16 +26,16 @@
 .store-list{
     margin-top: 30px;
     width: 100%;
-    padding-bottom: 180px;
+
 }
 .store-list th{
-    font-size: 20px;
+    font-size: 16px;
     padding: 5px;
     background-color: rgb(135, 197, 255);
 }
 .store-list td{
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
     padding: 8px;
     background-color: rgb(198, 223, 246);
 }
@@ -51,22 +51,23 @@
     display: flex;
     justify-content: right;
     margin-top: 20px;
+    padding-bottom: 180px;
 }
-button{
+.addnewbtn button{
     padding: 8px 25px;
     font-size: 20px;
     outline: none;
     border: none;
     border-radius: 3px;
-    background-color: rgba(94, 145, 247, 0.766);
+    background-color: #0091ffc9;
     transition: 0.3s;
     cursor: pointer;
     margin-right: 80px;
     display: flex;
     color: rgba(0, 0, 0, 0.852);
 }
-button:hover{
-    background-color: rgba(80, 137, 250, 0.468);
+.addnewbtn button:hover{
+    background-color: #0091ff;
 }
 .addnewbtn img{
     height: 25px;
@@ -89,7 +90,7 @@ button:hover{
     .store-list td{
         font-size: 15px;
     }
-    button{
+    .addnewbtn button{
         padding: 6px 20px;
         font-size: 18px;
     }

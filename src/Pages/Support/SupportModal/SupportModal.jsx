@@ -7,46 +7,46 @@ import { callgetMessage } from "../../../API/chats/getChatMessages";
 import { createnewMessage } from "../../../API/chats/createNewMessage";
 
 const SupportModal = ({ closeSupportModal }) => {
-  const [admin,setAdmin]=useState('admin_chat');
-  
+  const [admin, setAdmin] = useState("admin_chat");
+
   const [useChat, setuserChat] = useState("");
 
   const [chat, setChat] = useState([]);
 
-  const handleChat=async()=>{
-    if(useChat==='')
-        return
-    const messageObj={
-        roomid:'ZD8YZmE9ChPrntzJMZUt6XANMPz1##admin_chat',
-        message:useChat,
-        messagedate:new Date().toString(),
-        recieverid:'ZD8YZmE9ChPrntzJMZUt6XANMPz1',
-        senderid:admin
-
-    }
-    await createnewMessage(messageObj)
-    setChat([...chat,messageObj]);
+  const handleChat = async () => {
+    if (useChat === "") return;
+    const messageObj = {
+      roomid: "ZD8YZmE9ChPrntzJMZUt6XANMPz1##admin_chat",
+      message: useChat,
+      messagedate: new Date().toString(),
+      recieverid: "ZD8YZmE9ChPrntzJMZUt6XANMPz1",
+      senderid: admin,
+    };
+    await createnewMessage(messageObj);
+    setChat([...chat, messageObj]);
     setuserChat("");
-}
-    useEffect(()=>{
-      getAllChats()
-    },[])
+  };
+  useEffect(() => {
+    getAllChats();
+  }, []);
 
-    useEffect(()=>{
-      setInterval(() => {
-        console.log("Helo")
-        getAllChats();
-      }, 5000);
-    },[])
+  useEffect(() => {
+    setInterval(() => {
+      console.log("Helo");
+      getAllChats();
+    }, 5000);
+  }, []);
 
-    const getAllChats=async()=>{
-      try {
-        const messages=await callgetMessage("ZD8YZmE9ChPrntzJMZUt6XANMPz1##admin_chat");
-        setChat([...messages.data])
-      } catch (error) {
-        console.log(error);
-      }
+  const getAllChats = async () => {
+    try {
+      const messages = await callgetMessage(
+        "ZD8YZmE9ChPrntzJMZUt6XANMPz1##admin_chat"
+      );
+      setChat([...messages.data]);
+    } catch (error) {
+      console.log(error);
     }
+  };
   return (
     <>
       <div className="support-modal-container">
@@ -79,15 +79,23 @@ const SupportModal = ({ closeSupportModal }) => {
               <hr />
               <div className="chat-container">
                 <div className="chat-content">
-                  {
-                    chat.length>0 &&
-                    chat.reverse().map((message,index)=>(
-                      <div className="user-chat" style={{justifyContent: message.senderid ===admin ? 'flex-end':"flex-start"}}
-                      key={index}>
-                        <h5 style={{alignSelf:"flex-start"}}>{message.message}</h5>
+                  {chat.length > 0 &&
+                    chat.reverse().map((message, index) => (
+                      <div
+                        className="user-chat"
+                        style={{
+                          justifyContent:
+                            message.senderid === admin
+                              ? "flex-end"
+                              : "flex-start",
+                        }}
+                        key={index}
+                      >
+                        <h5 style={{ alignSelf: "flex-start" }}>
+                          {message.message}
+                        </h5>
                       </div>
-                    ))
-                  }
+                    ))}
                 </div>
 
                 <div className="msg-box">

@@ -63,9 +63,9 @@ const Banner = ({ userCount, storeCount }) => {
     <div>
       {banner === "defaultBanner" && (
         <>
-          <div className="Bannercategoriefilter">
+          {/* <div className="Bannercategoriefilter">
             <Filter />
-          </div>
+          </div> */}
 
           {loading ? (
             <Loader />

@@ -5,7 +5,7 @@ import Filter from '../../Components/Filter/Filter'
 const SubAdmin = () => {
   return (
     <div className="subAdmin-container">
-       <div className="categoriefilter"><Filter/></div>
+       {/* <div className="categoriefilter"><Filter/></div> */}
       <div className="subAdmin-content">
         <div className="subAdmin">
           <h4>New Sub Admin</h4>

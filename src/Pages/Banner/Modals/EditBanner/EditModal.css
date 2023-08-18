@@ -95,9 +95,16 @@ label {
 }
 .save-btn {
   color: #fff;
-  margin-left: 210px;
+  margin-left: 170px;
   background-color: rgba(0, 128, 0, 0.742);
   transition: 0.3s;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
 .save-btn:hover {
   background-color: green;

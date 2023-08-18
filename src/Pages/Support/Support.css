@@ -32,12 +32,12 @@
 }
 .Support-list th{
     font-size: 20px;
-    padding: 15px;
+    padding: 16px;
     background-color: rgb(135, 197, 255);
 }
 .Support-list td{
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
     padding: 10px;
     background-color: rgb(198, 223, 246);
 }

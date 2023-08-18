@@ -24,9 +24,9 @@ const Drivers = () => {
   }, []);
   return (
     <div className="driver-container">
-      <div className="drivercategoriefilter">
+      {/* <div className="drivercategoriefilter">
         <Filter />
-      </div>
+      </div> */}
       {loading ? (
         <Loader/>
       ) : (

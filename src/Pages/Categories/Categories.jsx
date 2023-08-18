@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Categories.css";
-import { getNotes } from "../../API";
+import { getNotes, deleteData } from "../../API";
 import Modal from "../Categories/Cat_Modal/AddCat";
 import Filter from "../../Components/Filter/Filter";
 import Loader from "../../Components/Loader/Loader";
@@ -22,7 +22,20 @@ const Categories = () => {
       setLoading(false);
     }
   };
-  fetchData();
+  useEffect(() => {
+    fetchData();
+  });
+  // Deleting the Table data
+  const delete_Data = async (id, table_name) => {
+    console.log("id and tablename", id, table_name);
+    try {
+      await deleteData({ id, table_name });
+      const response = await getNotes("globalcategory");
+      setcategory(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   return (
     <div className="categorie-container">
@@ -47,6 +60,13 @@ const Categories = () => {
                   </div>
                   <div className="product_name">
                     <h5>{category.categoryname}</h5>
+                  </div>
+                  <div className="cat_deletebtn">
+                    <button
+                      onClick={() => delete_Data(category.id, "globalcategory")}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               );

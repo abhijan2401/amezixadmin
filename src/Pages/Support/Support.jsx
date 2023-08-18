@@ -13,9 +13,9 @@ const Support = () => {
 
   return (
     <div>
-      <div className="Supportcategoriefilter">
+      {/* <div className="Supportcategoriefilter">
         <Filter />
-      </div>
+      </div> */}
       <div className="Support-content" id="list">
         <div className="Supports">
           <h4>User Support</h4>

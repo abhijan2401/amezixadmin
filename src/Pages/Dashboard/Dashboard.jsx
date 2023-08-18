@@ -79,7 +79,7 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard-container'>
-      <div className="categoriefilter"><Filter/></div>
+      {/* <div className="categoriefilter"><Filter/></div> */}
         <div className="dashboard-content">
           <div className="active_order"><h4>Active Order</h4><p>{storeorder_list}</p></div>
           {/* <div className="active_order"><h4>Total Sales</h4><p>45000</p></div> */}

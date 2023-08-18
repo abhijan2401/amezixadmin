@@ -25,7 +25,7 @@ const Transaction = () => {
           <h4>Admin Panel</h4>
         </div>
         <div className="avatar">
-        <button className="logout-btn">Logout</button>
+        {/* <button className="logout-btn">Logout</button> */}
           <AccountCircleIcon
             style={{ fontSize: "60px", marginRight: "20px", cursor: "pointer" }}
           />

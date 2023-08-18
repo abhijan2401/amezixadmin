@@ -24,9 +24,9 @@ const Feedback = () => {
   }, []);
   return (
     <div>
-      <div className="Feedbackcategoriefilter">
+      {/* <div className="Feedbackcategoriefilter">
         <Filter />
-      </div>
+      </div> */}
       {loading ? (
         <Loader />
       ) : (

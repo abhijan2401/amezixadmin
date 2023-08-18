@@ -76,7 +76,7 @@ const UserBanner = () => {
       {backbanner === "" ? (
         <>
           <div className="user-banner-header">
-            <Filter />
+            {/* <Filter /> */}
             <p className="banner-para-header">
               <ArrowBackIosIcon
                 onClick={() => setbackBanner("backBanner")}

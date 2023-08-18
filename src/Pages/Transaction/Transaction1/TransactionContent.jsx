@@ -5,7 +5,7 @@ import Filter from '../../../Components/Filter/Filter'
 const TransactionContent = () => {
   return (
     <div>
-      <div className="transactioncategoriefilter"><Filter/></div>
+      {/* <div className="transactioncategoriefilter"><Filter/></div> */}
        <div className="transaction-content" id="list">
           <div
             className="transaction"
