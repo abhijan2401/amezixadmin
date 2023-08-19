@@ -1,0 +1,64 @@
+.registerpage{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient(circle farthest-side, #f8f8f8, #f3f3f3);
+}
+.register{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5% 5%;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.register input{
+    padding: 10px 10px;
+    width: 500px;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.225);
+    font-size: 16px;
+    margin-bottom: 30px;
+    background-color: transparent;
+
+}
+.register-form h1{
+    text-align: center;
+    font-weight: 700;
+    font-size: 50px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.register-btn{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.register-btn button{
+    border: none;
+    outline: none;
+    padding: 8px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: rgba(32, 106, 218, 0.753);
+    transition: 0.5s;
+}
+.register-btn button:hover{
+    color: #fff;
+    background-color: rgb(32, 106, 218);
+}
+.register-btn p {
+    margin-top: 20px;
+    text-align: center;
+}
+.register-btn p span{
+    color: rgba(0, 102, 255, 0.753);
+    transition: 0.5s;
+    cursor: pointer;
+    font-weight: bold;
+}
+.register-btn p span:hover{
+    color: rgb(32, 106, 218);
+}

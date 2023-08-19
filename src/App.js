@@ -5,6 +5,9 @@ import Transaction from './Pages/Transaction/Transaction';
 import Filter from './Components/Filter/Filter';
 import Banner from './Pages/Banner/Banner';
 import Loader from './Components/Loader/Loader';
+import SignUp from './Components/SignUp/SignUp';
+import SignIn from './Components/SignIn/SignIn';
+import ForgetPass from './Components/ForgetPassword/ForgetPass';
 
 
 function App() {
@@ -15,6 +18,9 @@ function App() {
         <Route path='/Transaction' element={<Transaction />} />
         <Route path='/Filter' element={<Filter />} />
         <Route path='/Banner' element={<Banner />} />
+        <Route path='/SignUp' element={<SignUp/>}/>
+        <Route path='/SignIn' element={<SignIn/>}/>
+        <Route path='/ForgetPass' element={<ForgetPass/>}/>
       </Routes>
     </div>
   );
