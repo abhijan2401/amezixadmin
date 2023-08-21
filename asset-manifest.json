@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/amezixadmin/static/css/main.a0e2aefa.css",
-    "main.js": "/amezixadmin/static/js/main.286cb274.js",
+    "main.js": "/amezixadmin/static/js/main.a2e7e77e.js",
     "static/media/banner.png": "/amezixadmin/static/media/banner.6e3aeab74273e73bdd58.png",
     "static/media/pr.jfif": "/amezixadmin/static/media/pr.7eaf9ae7c1a10b2e0495.jfif",
     "index.html": "/amezixadmin/index.html",
     "static/media/add.svg": "/amezixadmin/static/media/add.4ce077e837c37e37af764ec9c05749bb.svg",
     "main.a0e2aefa.css.map": "/amezixadmin/static/css/main.a0e2aefa.css.map",
-    "main.286cb274.js.map": "/amezixadmin/static/js/main.286cb274.js.map"
+    "main.a2e7e77e.js.map": "/amezixadmin/static/js/main.a2e7e77e.js.map"
   },
   "entrypoints": [
     "static/css/main.a0e2aefa.css",
-    "static/js/main.286cb274.js"
+    "static/js/main.a2e7e77e.js"
   ]
 }
