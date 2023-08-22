@@ -1,89 +1,15 @@
-.login {
-    /* border: 2px solid red; */
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: radial-gradient(circle farthest-side, #f8f8f8, #f3f3f3);
-  }
-  .form-login {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 5% 5%;
-    border-radius: 8px;
-    background-color: #fff;
-  }
-  .form-login h1 {
-    text-align: center;
-    font-weight: 700;
-    font-size: 50px;
-    padding: 10px 0;
-    margin-bottom: 20px;
-  }
-  .form-login input {
-    padding: 10px 10px;
-    width: 500px;
-    outline: none;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.225);
-    font-size: 16px;
-    margin-bottom: 30px;
-    background-color: transparent;
-  }
-  .submit input {
-    width: 20px;
-    margin-right: 5px;
-  }
-  .submit {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .submit p {
-    margin-left: 10px;
-    text-align: center;
-  }
-  
-  .sumbit-pass p {
-    text-align: left;
-    cursor: pointer;
-    font-size: 14px;
-    color: rgba(32, 106, 218, 0.753);
-  }
-  .sumbit-pass p:hover {
-    text-align: left;
-    cursor: pointer;
-  
-    color: rgb(32, 106, 218);
-  }
-  .submit-register {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-  }
-  .submit-register button {
-    border: none;
-    outline: none;
-    padding: 8px;
-    letter-spacing: 2px;
-    font-size: 20px;
-    background-color: rgba(32, 106, 218, 0.753);
-    transition: 0.5s;
-    cursor: pointer;
-  }
-  .submit-register button:hover {
-    color: #fff;
-    background-color: rgb(32, 106, 218);
-  }
-  .submit-register p {
-    margin-top: 20px;
-  }
-  .submit-register p span {
-    color: rgba(32, 106, 218, 0.753);
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.5s;
-  }
-  .submit-register p span:hover {
-    color: rgb(32, 106, 218);
-  }
-  
+.forget_btn{
+  outline: none;
+  border: none;
+  padding: 8px 30px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  background-color: rgba(32, 106, 218, 0.753);
+  transition: 0.5s;
+  cursor: pointer;
+}
+.forget_btn:hover{
+  color: #fff;
+  background-color: rgb(32, 106, 218);
+}

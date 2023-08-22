@@ -1,69 +1,69 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 
-
 const SignUp = () => {
-  const [email, setemail] = useState('')
-  const [password, setpassword] = useState('');
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  // console.log("hello",email, password)
 
   const navigate = useNavigate();
   const newUser = async () => {
-    createUserWithEmailAndPassword(auth, "abhishek.jangid777@gmail.com", "abhi@123#k")
+    console.log("hello", email, password);
+    await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential.user)
-        // navigate('/')
+        console.log("user created", userCredential);
+        localStorage.setItem("autoLoginEmail", email);
+        localStorage.setItem("autoLoginPassword", password);
+        navigate('/amezixadmin')
       })
       .catch((error) => {
-        switch (error.code) {
-          case "auth/user-not-found":
-            alert("Incorrect Email")
-            break;
-          case "auth/wrong-password":
-            alert("Incorrect Password");
-            break;
-          default:
-            break;
-        }
+        console.log("user not Created", error);
       });
-  }
+  };
   return (
     <>
       <div className="registerpage">
         <div className="register">
-          <form action="" className="register-form">
+          <div className="register-form">
             <h1>Sign Up</h1>
-            {/* <div className="name">
-              <input
-                type="name"
-                placeholder="username"
-                required
-                autoFocus="false"
-                autoComplete="false"
-              />
-            </div> */}
             <div className="email">
               <input
                 type="email"
+                name="email"
                 placeholder="email address"
                 required
-                autoFocus="false"
                 autoComplete="false"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="password">
-              <input type="password" placeholder="password" />
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
-            <div className="password">
-              <input type="password" placeholder="confirm password" />
-            </div>
+            {/* <div className="password">
+              <input
+                type="password"
+                name="confirm_password"
+                placeholder="confirm password"
+                onChange={handleinput}
+              />
+            </div> */}
             <div className="register-btn">
               <button onClick={newUser}>SignUp</button>
-              <p>already have an account? <span onClick={() => navigate('/SignIn')}>Login here</span> </p>
+              <p>
+                already have an account?{" "}
+                <span onClick={() => navigate("/SignIn")}>Login here</span>{" "}
+              </p>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </>

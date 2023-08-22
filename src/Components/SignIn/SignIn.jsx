@@ -6,6 +6,8 @@ import { auth } from "../../firebase";
 
 const SignIn = () => {
   const navigate = useNavigate({});
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState()
   const [data, setdata] = useState()
   // const [email, setEmail] = useState();
   const handleinput = (e) => {
@@ -14,7 +16,7 @@ const SignIn = () => {
     })
   }
   const newUser = async () => {
-    signInWithEmailAndPassword(auth, "abhishek.jangid643@gmail.com", "123456")
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential.user.uid)
         // navigate('/')
@@ -38,11 +40,11 @@ const SignIn = () => {
         <div className="login">
           <div action="" className="form-login">
             <h1>Sign In</h1>
-            {/* <div className="email">
-              <input type="email" placeholder="Full Name" required autoFocus="false" autoComplete="false" name='email' onChange={handleinput}/>
-            </div> */}
+            <div className="email">
+              <input type="email" placeholder="enter your email" required autoFocus="false" autoComplete="false" name='email' onChange={(e)=>setEmail(e.target.value)}/>
+            </div>
             <div className="password">
-              <input type="password" placeholder="Password" name="password" onChange={handleinput} />
+              <input type="password" placeholder="Password" name="password" onChange={(e)=>setPassword(e.target.value)} />
             </div>
             <div className="submit">
               <div className="sumbit-pass">

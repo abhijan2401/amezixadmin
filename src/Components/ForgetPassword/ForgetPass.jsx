@@ -6,6 +6,7 @@ import { auth } from "../../firebase";
 
 const ForgetPass = () => {
   const navigate = useNavigate({});
+  const [email, setEmail] = useState();
   const [data, setdata] = useState();
   // const [email, setEmail] = useState();
   const handleinput = (e) => {
@@ -18,7 +19,7 @@ const ForgetPass = () => {
 
   const ResetLink = async () => {
     try {
-      sendPasswordResetEmail(auth, "abhishek.jangid643@gmail.com")
+      sendPasswordResetEmail(auth, email)
         .then(() => {
           console.log("link sent successfully");
           alert("Link Send Successfully (Check Spam Also)");
@@ -42,15 +43,15 @@ const ForgetPass = () => {
             <div className="email">
               <input
                 type="email"
-                placeholder="Full Name"
+                placeholder="enter your email"
                 required
                 autoFocus="false"
                 autoComplete="false"
                 name="email"
-                onChange={handleinput}
+                onChange={(e)=>setEmail(e.target.value)}
               />
             </div>
-            <button onClick={ResetLink}>ckick</button>
+            <button className="forget_btn" onClick={ResetLink}>Submit</button>
             {/* <div className="password">
               <input
                 type="password"
