@@ -1,4 +1,4 @@
-import { Routes, Route,Navigate  } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import AdminBoard from "./Components/AdminBoard/AdminBoard";
 import Transaction from "./Pages/Transaction/Transaction";
@@ -16,21 +16,24 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        {isLoggedIn ? (
-          <>
-            <Route path="/amezixadmin" element={<AdminBoard />} />
-            <Route path="/Transaction" element={<Transaction />} />
-            <Route path="/Filter" element={<Filter />} />
-            <Route path="/Banner" element={<Banner />} />
-          </>
-        ) : (
-          <>
-            <Route path="/SignUp" element={<SignUp />} />
-            <Route path="/SignIn" element={<SignIn />} />
-            <Route path="/ForgetPass" element={<ForgetPass />} />
-          </>
-        )}
-          <Route path="/" element={<Navigate to={isLoggedIn ? "/amezixadmin" : "/SignIn"} />} />
+        {/* {isLoggedIn ? 
+        ( */}
+
+        <>
+          <Route path="/amezixadmin" element={<AdminBoard />} />
+          <Route path="/Transaction" element={<Transaction />} />
+          <Route path="/Filter" element={<Filter />} />
+          <Route path="/Banner" element={<Banner />} />
+        </>
+        // ) : (
+        //   <>
+        //     <Route path="/SignUp" element={<SignUp />} />
+        //     <Route path="/SignIn" element={<SignIn />} />
+        //     <Route path="/ForgetPass" element={<ForgetPass />} />
+        //   </>
+        // )
+        {/* } */}
+        <Route path="/" element={<Navigate to={isLoggedIn ? "/amezixadmin" : "/SignIn"} />} />
       </Routes>
     </div>
   );
