@@ -1,0 +1,25 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to your main branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AWS_PEM_KEY }}" > ~/.ssh/id_rsa.pem
+          chmod 600 ~/.ssh/id_rsa.pem
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to EC2
+        run: |
+          rsync -avz --exclude 'node_modules' --exclude '.git' --exclude '.github' -e "ssh -i ~/.ssh/id_rsa.pem" . ${{ secrets.SSH_HOST }}:/var/www/html/
