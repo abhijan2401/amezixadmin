@@ -48,7 +48,7 @@ const ForgetPass = () => {
                 autoFocus="false"
                 autoComplete="false"
                 name="email"
-                onChange={(e)=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <button className="forget_btn" onClick={ResetLink}>Submit</button>
@@ -64,7 +64,7 @@ const ForgetPass = () => {
               <div className="submit-register">
                 <p>
                   don't have account?{" "}
-                  <span onClick={() => navigate("/SignUp")}>Register here</span>
+                  <span onClick={() => navigate("/amezixadmin/SignUp")}>Register here</span>
                 </p>
               </div>
             </div>

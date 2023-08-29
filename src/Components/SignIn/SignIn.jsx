@@ -41,10 +41,10 @@ const SignIn = () => {
           <div action="" className="form-login">
             <h1>Sign In</h1>
             <div className="email">
-              <input type="email" placeholder="enter your email" required autoFocus="false" autoComplete="false" name='email' onChange={(e)=>setEmail(e.target.value)}/>
+              <input type="email" placeholder="enter your email" required autoFocus="false" autoComplete="false" name='email' onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="password">
-              <input type="password" placeholder="Password" name="password" onChange={(e)=>setPassword(e.target.value)} />
+              <input type="password" placeholder="Password" name="password" onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className="submit">
               <div className="sumbit-pass">
@@ -54,7 +54,7 @@ const SignIn = () => {
                 <button onClick={newUser}>SignIn</button>
                 <p>
                   don't have account?{" "}
-                  <span onClick={() => navigate('/SignUp')}>Register here</span>
+                  <span onClick={() => navigate('/amezixadmin/SignUp')}>Register here</span>
                 </p>
               </div>
             </div>

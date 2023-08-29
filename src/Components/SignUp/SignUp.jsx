@@ -60,7 +60,7 @@ const SignUp = () => {
               <button onClick={newUser}>SignUp</button>
               <p>
                 already have an account?{" "}
-                <span onClick={() => navigate("/SignIn")}>Login here</span>{" "}
+                <span onClick={() => navigate("/amezixadmin")}>Login here</span>{" "}
               </p>
             </div>
           </div>

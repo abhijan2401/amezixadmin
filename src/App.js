@@ -8,33 +8,50 @@ import Loader from "./Components/Loader/Loader";
 import SignUp from "./Components/SignUp/SignUp";
 import SignIn from "./Components/SignIn/SignIn";
 import ForgetPass from "./Components/ForgetPassword/ForgetPass";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 
 function App() {
-  const savedEmail = localStorage.getItem("autoLoginEmail");
-  const savedPassword = localStorage.getItem("autoLoginPassword");
-  const isLoggedIn = savedEmail && savedPassword;
+  const [userUid, setUserUid] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
+  useEffect(() => {
+    getAutherUserDetails();
+  }, []);
+  async function getAutherUserDetails(userValue) {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        const email = user.email
+        setUserUid(uid);
+        setUserEmail(email)
+      } else {
+        setUserUid(userValue);
+      }
+    });
+  }
   return (
     <div className="App">
-      <Routes>
-        {/* {isLoggedIn ? 
-        ( */}
+      {
+        !userUid ?
+          <Routes>
+            <Route path='/amezixadmin' element={<SignIn />} />
+            <Route path='/amezixadmin/SignUp' element={<SignUp />} />
+            <Route path='/ForgetPass' element={<ForgetPass />} />
+          </Routes> :
+          <div className="App">
+            {
+              userUid &&
+              <Routes>
+                <Route path='/amezixadmin' element={<AdminBoard />} />
+                <Route path='/Transaction' element={<Transaction />} />
+                <Route path='/Filter' element={<Filter />} />
+                <Route path='/Banner' element={<Banner />} />
+              </Routes>
+            }
+          </div>
+      }
 
-        <>
-          <Route path="/amezixadmin" element={<AdminBoard />} />
-          <Route path="/Transaction" element={<Transaction />} />
-          <Route path="/Filter" element={<Filter />} />
-          <Route path="/Banner" element={<Banner />} />
-        </>
-        // ) : (
-        //   <>
-        //     <Route path="/SignUp" element={<SignUp />} />
-        //     <Route path="/SignIn" element={<SignIn />} />
-        //     <Route path="/ForgetPass" element={<ForgetPass />} />
-        //   </>
-        // )
-        {/* } */}
-        <Route path="/" element={<Navigate to={isLoggedIn ? "/amezixadmin" : "/SignIn"} />} />
-      </Routes>
     </div>
   );
 }
