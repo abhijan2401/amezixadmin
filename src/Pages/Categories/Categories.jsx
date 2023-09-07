@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
 import "./Categories.css";
 import { getNotes, deleteData } from "../../API";
 import Modal from "../Categories/Cat_Modal/AddCat";
@@ -11,7 +14,9 @@ const Categories = () => {
   const closeModal = () => setModal(false);
   const [category, setcategory] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const deleteNotify = () => toast("Category is Deleted !!", {
+    position:"top-center" ,autoClose:"3000"
+  });
   const fetchData = async () => {
     try {
       const response = await getNotes("globalcategory");
@@ -24,7 +29,7 @@ const Categories = () => {
   };
   useEffect(() => {
     fetchData();
-  });
+  },[]);
   // Deleting the Table data
   const delete_Data = async (id, table_name) => {
     console.log("id and tablename", id, table_name);
@@ -32,6 +37,7 @@ const Categories = () => {
       await deleteData({ id, table_name });
       const response = await getNotes("globalcategory");
       setcategory(response.data);
+      deleteNotify();
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -73,6 +79,7 @@ const Categories = () => {
             })}
           </div>
           {modal && <Modal closeModal={closeModal} />}
+          <ToastContainer/>
         </>
       )}
     </div>

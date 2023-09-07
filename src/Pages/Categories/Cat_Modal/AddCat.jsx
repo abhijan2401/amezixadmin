@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
 import "./AddCat.css";
 import { collection, addDoc } from "firebase/firestore";
 import { db, storage } from "../../../firebase";
@@ -9,6 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 const AddCat = ({ closeModal }) => {
   const [product, setProduct] = useState();
   const [titleImage, settitleImage] = useState("");
+  const updateNotify = () => toast("Category is Added !!");
 
   const handleSubmit = async (e) => {
     const dateVal = new Date();
@@ -32,10 +36,12 @@ const AddCat = ({ closeModal }) => {
       );
       const res = await response.json();
       console.log("hello", res);
+      updateNotify();
       if (res.data === undefined) {
         alert("Error occur while uploading");
       } else {
         closeModal();
+
       }
     } catch (error) {
       console.log("Error", error);
@@ -139,6 +145,7 @@ const AddCat = ({ closeModal }) => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };

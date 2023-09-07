@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getNotes, deleteData } from "../../../API";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 // import "./UserBanner.css";
 import Banner from "../Banner";
 import Filter from "../../../Components/Filter/Filter";
@@ -26,6 +28,10 @@ const UserBanner = () => {
   const [loading, setLoading] = useState(true);
   const [storeCount, setStoreCount] = useState(0);
   const [selectedData, setSelectedData] = useState(null);
+
+  const deleteNotify = () => toast("Item is Deleted !!", {
+    position:"top-center" ,autoClose:"3000"
+  });
 
   // Function to calculate the number of users
   const calculateUserCount = (bannerData) => {
@@ -56,6 +62,7 @@ const UserBanner = () => {
       await deleteData({ id, table_name });
       const response = await getNotes("banner");
       setStoreBanner(response.data);
+      deleteNotify();
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -173,6 +180,7 @@ const UserBanner = () => {
               selectedData={selectedData}
             />
           )}
+           <ToastContainer/>
         </>
       ) : (
         <Banner storeCount={storeCount} />

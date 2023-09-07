@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getNotes, deleteData } from "../../API";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import "./Banner.css";
 import Filter from "../../Components/Filter/Filter";
 import CreateIcon from "@mui/icons-material/Create";
@@ -17,9 +19,14 @@ const Banner = ({ userCount, storeCount }) => {
   const closeEditModal = () => setEditModal(false);
   const [checked, setChecked] = React.useState(true);
 
+  const deleteNotify = () => toast("Item is Deleted !!", {
+    position:"top-center" ,autoClose:"3000"
+  });
+
   const [bannerData, setBannerData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedData, setSelectedData] = useState(null);
+  
   const fetchData = async () => {
     console.log("i am called")
     try {
@@ -42,6 +49,7 @@ const Banner = ({ userCount, storeCount }) => {
       await deleteData({ id, table_name });
       const response = await getNotes("banner");
       setBannerData(response.data);
+      deleteNotify();
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -148,6 +156,7 @@ const Banner = ({ userCount, storeCount }) => {
               )}
             </>
           )}
+            <ToastContainer/>
         </>
       )}
 

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import "./bannerModal.css";
 import Switch from "@mui/material/Switch";
 import CloseIcon from "@mui/icons-material/Close";
@@ -17,6 +19,7 @@ const BannerModal = ({ closeModal, role }) => {
     setChecked(event.target.checked);
     console.log(event.target.checked);
   };
+  const updateNotify = () => toast("Banner is Added !!");
   useEffect(() => {
     console.log("role--", role);
   });
@@ -48,6 +51,7 @@ const BannerModal = ({ closeModal, role }) => {
       );
       const res = await response.json();
       console.log("hello", res);
+      updateNotify();
       if (res.message === "You data is inserted") {
         console.log("hey!");
         closeModal();
@@ -176,6 +180,7 @@ const BannerModal = ({ closeModal, role }) => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };

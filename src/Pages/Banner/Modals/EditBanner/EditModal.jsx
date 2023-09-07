@@ -3,12 +3,17 @@ import "./EditModal.css";
 import Switch from "@mui/material/Switch";
 import CloseIcon from "@mui/icons-material/Close";
 
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
 const EditModal = ({ closeEditModal, selectedData }) => {
   const [editedData, setEditedData] = useState({ ...selectedData });
   console.log(editedData);
   const [image, setImage] = useState(editedData.image);
   const [checked, setChecked] = React.useState(false);
   const [fileName, setFileName] = useState("No selected File");
+
+  const updateNotify = () => toast("Banner Updated!!");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -53,6 +58,7 @@ const EditModal = ({ closeEditModal, selectedData }) => {
       );
       const res = await response.json();
       console.log("hello", res);
+      updateNotify();
       if (res.message === "Your data is updated") {
         console.log("hey!");
         closeEditModal();
@@ -148,6 +154,7 @@ const EditModal = ({ closeEditModal, selectedData }) => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };

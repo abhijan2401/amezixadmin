@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import "./UserBanner.css";
 import Banner from "../Banner";
 import Filter from "../../../Components/Filter/Filter";
@@ -27,6 +29,10 @@ const UserBanner = () => {
   const [userCount, setUserCount] = useState([]);
   const [selectedUserData, setSelectedUserData] = useState(null);
 
+    const deleteNotify = () => toast("Item is Deleted !!", {
+    position:"top-center" ,autoClose:"3000"
+  });
+
   // Function to calculate the number of users
   // const calculateUserCount = (bannerData) => {
   //   const users = bannerData.filter((banner) => banner.role === "User");
@@ -36,18 +42,27 @@ const UserBanner = () => {
   // useEffect(() => {
   //   calculateUserCount(userBanner);
   // }, []);
-
+  const fetchData = async () => {
+    try {
+      const response = await getNotes("banner");
+      setUserBanner(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getNotes("banner");
-        setUserBanner(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await getNotes("banner");
+    //     setUserBanner(response.data);
+    //   } catch (error) {
+    //     console.error("Error fetching data:", error);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
     fetchData();
   }, []);
 
@@ -58,6 +73,7 @@ const UserBanner = () => {
       await deleteData({ id, table_name });
       const response = await getNotes("banner");
       setUserBanner(response.data);
+       deleteNotify();
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -71,6 +87,7 @@ const UserBanner = () => {
     setSelectedUserData(newdata);
     console.log(newdata);
     setEditModal(true);
+    fetchData();
   };
 
   return (
@@ -176,6 +193,7 @@ const UserBanner = () => {
               selectedData={selectedUserData}
             />
           )}
+           <ToastContainer/>
         </>
       ) : (
         <Banner userCount={userCount} />

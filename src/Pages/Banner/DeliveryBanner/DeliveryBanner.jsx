@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getNotes, deleteData } from "../../../API";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import Banner from "../Banner";
 import Filter from "../../../Components/Filter/Filter";
 import Modal from "../Modals/AddImage/bannerModal";
@@ -25,6 +27,9 @@ const UserBanner = () => {
   const [loading, setLoading] = useState(true);
   const [selectedData, setSelectedData] = useState(null);
 
+  const deleteNotify = () => toast("Item is Deleted !!", {
+    position:"top-center" ,autoClose:"3000"
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,6 +51,7 @@ const UserBanner = () => {
       await deleteData({ id, table_name });
       const response = await getNotes("banner");
       setDeliveryBanner(response.data);
+      deleteNotify();
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -161,6 +167,7 @@ const UserBanner = () => {
               selectedData={selectedData}
             />
           )}
+          <ToastContainer />
         </>
       ) : (
         <Banner />
