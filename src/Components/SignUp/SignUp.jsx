@@ -18,10 +18,12 @@ const SignUp = () => {
         console.log("user created", userCredential);
         localStorage.setItem("autoLoginEmail", email);
         localStorage.setItem("autoLoginPassword", password);
-        navigate('/amezixadmin')
+        alert("account craeted ,login please")
+        navigate('/')
       })
       .catch((error) => {
         console.log("user not Created", error);
+        alert("Issue while creating account")
       });
   };
   return (
@@ -60,7 +62,7 @@ const SignUp = () => {
               <button onClick={newUser}>SignUp</button>
               <p>
                 already have an account?{" "}
-                <span onClick={() => navigate("/amezixadmin")}>Login here</span>{" "}
+                <span onClick={() => navigate("/")}>Login here</span>{" "}
               </p>
             </div>
           </div>
