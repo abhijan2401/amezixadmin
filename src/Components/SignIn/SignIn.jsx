@@ -54,7 +54,7 @@ const SignIn = () => {
                 <button onClick={newUser}>SignIn</button>
                 <p>
                   don't have account?{" "}
-                  <span onClick={() => navigate('/amezixadmin/SignUp')}>Register here</span>
+                  <span onClick={() => navigate('/SignUp')}>Register here</span>
                 </p>
               </div>
             </div>

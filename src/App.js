@@ -35,15 +35,15 @@ function App() {
       {
         !userUid ?
           <Routes>
-            <Route path='/amezixadmin' element={<SignIn />} />
-            <Route path='/amezixadmin/SignUp' element={<SignUp />} />
+            <Route path='/' element={<SignIn />} />
+            <Route path='/SignUp' element={<SignUp />} />
             <Route path='/ForgetPass' element={<ForgetPass />} />
           </Routes> :
           <div className="App">
             {
               userUid &&
               <Routes>
-                <Route path='/amezixadmin' element={<AdminBoard />} />
+                <Route path='/' element={<AdminBoard />} />
                 <Route path='/Transaction' element={<Transaction />} />
                 <Route path='/Filter' element={<Filter />} />
                 <Route path='/Banner' element={<Banner />} />
