@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./AdminBoard.css";
 
 // API
-import {getNotes} from "../../API";
+import { getNotes } from "../../API";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -17,7 +17,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import TextsmsIcon from "@mui/icons-material/Textsms";
 import StarIcon from "@mui/icons-material/Star";
 import PagesIcon from "@mui/icons-material/Pages";
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 
 import Dashboard from "../../Pages/Dashboard/Dashboard";
 import Categories from "../../Pages/Categories/Categories";
@@ -26,12 +26,13 @@ import Stores from "../../Pages/Stores/Stores";
 import User from "../../Pages/Users/User";
 import Drivers from "../../Pages/Drivers/Drivers";
 // import Transaction from "../../Pages/Transaction/Transaction";
+import Wallet from "../../Pages/Wallet/Wallet";
 import SubAdmin from "../../Pages/Sub Admin/SubAdmin";
 import Banner from "../../Pages/Banner/Banner";
 import Notification from "../../Pages/Notifaction/Notification";
 import Support from "../../Pages/Support/Support";
 import Feedback from "../../Pages/Feedback/Feedback";
-import Delivery from '../../Pages/Delivery/Delivery';
+import Delivery from "../../Pages/Delivery/Delivery";
 
 const AdminBoard = () => {
   const [active, setActive] = useState("Dashboard");
@@ -47,79 +48,86 @@ const AdminBoard = () => {
           <h3>Amezix</h3>
           <h4>Admin Panel</h4>
         </div>
+
         <div className="panel-navigation">
-          <p className="Dashboard">
-            <DashboardIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Dashboard")}>Dashboard</span>{" "}
-          </p>
-          <p className="Categories">
-            <CategoryIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Categories")}>Categories</span>{" "}
-          </p>
-          <p className="orders">
-            <BorderColorIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Order")} className="btn">
-              Orders
-            </span>{" "}
-          </p>
-          <p className="delivery">
-            <DeliveryDiningIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("delivery")} className="btn">
-              Delivery
-            </span>{" "}
-          </p>
-          <p className="Stores">
-            <StoreIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Stores")} className="btn">
-              Stores
-            </span>{" "}
-          </p>
-          <p className="Users">
-            <PeopleIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("User")} className="btn">
-              Users
-            </span>{" "}
-          </p>
-          <p className="Drivers">
-            <AccountCircleIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Drivers")} className="btn">
-              Drivers
-            </span>{" "}
-          </p>
-          <p className="Transation">
-            <PaidIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Transaction")}>Transation</span>{" "}
-          </p>
-          {/* <p className="Sub_Admin">
+          <div className="sidebar-scrollable">
+            <p className="Dashboard">
+              <DashboardIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Dashboard")}>Dashboard</span>{" "}
+            </p>
+            <p className="Categories">
+              <CategoryIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Categories")}>Categories</span>{" "}
+            </p>
+            <p className="orders">
+              <BorderColorIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Order")} className="btn">
+                Orders
+              </span>{" "}
+            </p>
+            <p className="delivery">
+              <DeliveryDiningIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("delivery")} className="btn">
+                Delivery
+              </span>{" "}
+            </p>
+            <p className="Stores">
+              <StoreIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Stores")} className="btn">
+                Stores
+              </span>{" "}
+            </p>
+            <p className="Users">
+              <PeopleIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("User")} className="btn">
+                Users
+              </span>{" "}
+            </p>
+            <p className="Drivers">
+              <AccountCircleIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Drivers")} className="btn">
+                Drivers
+              </span>{" "}
+            </p>
+            <p className="Transation">
+              <PaidIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Transaction")}>Transation</span>{" "}
+            </p>
+            {/* <p className="Sub_Admin">
             <SupervisorAccountIcon style={{ fontSize: "25px" }} />{" "}
             <span onClick={() => setActive("SubAdmin")} className="btn">
               Sub Admin
             </span>{" "}
           </p> */}
-          <p className="Banner">
-            <PagesIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Banner")} className="btn">
-              Banner
-            </span>{" "}
-          </p>
-          <p className="Notification">
-            <NotificationsIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Notification")} className="btn">
-              Notification
-            </span>{" "}
-          </p>
-          <p className="Support">
-            <TextsmsIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Support")} className="btn">
-              Support
-            </span>{" "}
-          </p>
-          <p className="Feedback">
-            <StarIcon style={{ fontSize: "25px" }} />{" "}
-            <span onClick={() => setActive("Feedback")} className="btn">
-              Feedback
-            </span>{" "}
-          </p>
+            <p className="Banner">
+              <PagesIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Banner")} className="btn">
+                Banner
+              </span>{" "}
+            </p>
+            <p className="Wallet">
+              <PaidIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Wallet")}>Wallet</span>{" "}
+            </p>
+            <p className="Notification">
+              <NotificationsIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Notification")} className="btn">
+                Notification
+              </span>{" "}
+            </p>
+            <p className="Support">
+              <TextsmsIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Support")} className="btn">
+                Support
+              </span>{" "}
+            </p>
+            <p className="Feedback">
+              <StarIcon style={{ fontSize: "25px" }} />{" "}
+              <span onClick={() => setActive("Feedback")} className="btn">
+                Feedback
+              </span>{" "}
+            </p>
+          </div>
         </div>
       </div>
       <div className="Container">
@@ -137,6 +145,7 @@ const AdminBoard = () => {
           {active === "User" && <User />}
           {active === "Drivers" && <Drivers />}
           {active === "Transaction" && navigate("/Transaction")}
+          {active === "Wallet" && <Wallet/>}
           {/* {active === "SubAdmin" && <SubAdmin />} */}
           {active === "Banner" && <Banner />}
           {active === "Notification" && <Notification />}

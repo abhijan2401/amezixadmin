@@ -1,12 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Support.css";
 import Filter from "../../Components/Filter/Filter";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import TextsmsIcon from '@mui/icons-material/Textsms';
+import TextsmsIcon from "@mui/icons-material/Textsms";
 import SupportModal from "./SupportModal/SupportModal";
 
 const Support = () => {
-
   const [supportModal, setSupportModal] = useState(false);
 
   const closeSupportModal = () => setSupportModal(false);
@@ -36,7 +35,9 @@ const Support = () => {
             <th>
               Role <ArrowDropDownIcon id="arrow" />
             </th>
-            <th>Status <ArrowDropDownIcon id="arrow" /></th>
+            <th>
+              Status <ArrowDropDownIcon id="arrow" />
+            </th>
             <th>Action</th>
           </tr>
           <tr>
@@ -46,67 +47,7 @@ const Support = () => {
             <td>5784</td>
             <td>success </td>
             <td>
-              <TextsmsIcon id="message" onClick={()=>setSupportModal(true)} />
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>356</td>
-            <td>1425</td>
-            <td>5784</td>
-            <td>success </td>
-            <td>
-              <TextsmsIcon id="message"/>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>356</td>
-            <td>1425</td>
-            <td>5784</td>
-            <td>success </td>
-            <td>
-              <TextsmsIcon id="message"/>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>356</td>
-            <td>1425</td>
-            <td>5784</td>
-            <td>success </td>
-            <td>
-              <TextsmsIcon id="message"/>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>356</td>
-            <td>1425</td>
-            <td>5784</td>
-            <td>success </td>
-            <td>
-              <TextsmsIcon id="message" />
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>356</td>
-            <td>1425</td>
-            <td>5784</td>
-            <td>success </td>
-            <td>
-              <TextsmsIcon id="message" />
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>356</td>
-            <td>1425</td>
-            <td>5784</td>
-            <td>success </td>
-            <td>
-              <TextsmsIcon id="message"/>
+              <TextsmsIcon id="message" onClick={() => setSupportModal(true)} />
             </td>
           </tr>
         </table>
