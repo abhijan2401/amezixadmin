@@ -1,0 +1,161 @@
+.wallet-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(243, 242, 242, 0.859);
+}
+.wallet_details-container {
+  /* right:250px; */
+  left: 320px;
+  bottom: 300px;
+  position: fixed;
+  padding: 10px;
+  background-color: rgba(219, 218, 218, 0.999);
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  width: 60%;
+  /* border: 2px solid green; */
+}
+.wallet_close-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+#wallet_closemodal-btn {
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#wallet_closemodal-btn:hover {
+  color: red;
+}
+
+.wallet_user_details {
+  width: 80%;
+  display: flex;
+  padding: 0 8px;
+  justify-content: space-between;
+}
+.wallet_user p {
+  margin-top: 8px;
+}
+.wallet_balance p {
+  margin-top: 8px;
+}
+.wallet_cnt_number {
+  display: flex;
+  align-items: center;
+}
+.wallet_cnt_number h4{
+    background-color: green;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    padding: 10px 25px;
+  }
+.wallet_cnt_number #refresh_btn {
+  margin-right: 30px;
+}
+
+.add_wallet_amount {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 40px;
+  padding: 0 8px;
+}
+.add_deduct_amount {
+  display: flex;
+  width: 30%;
+}
+.add_deduct_amount .deduct {
+  display: flex;
+  flex-direction: column;
+}
+.add_deduct_amount input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  font-size: 18px;
+}
+.add_deduct_amount .add {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 20px;
+}
+.deduction_rsn select {
+  padding: 10px;
+  font-size: 15px;
+  outline: none;
+}
+.deduction_rsn select option {
+  padding: 10px;
+  font-size: 15px;
+}
+.rsn_btn button {
+  padding: 8px 20px;
+  font-size: 14px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  width: 100%;
+  background-color: rgb(255, 50, 50);
+  outline: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+.rsn_btn button:hover {
+  background-color: red;
+}
+
+.custom_rsn {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+.custom_rsn button {
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  width: 100%;
+  background-color: rgb(255, 50, 50);
+  outline: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+.custom_rsn button:hover {
+  background-color: red;
+}
+
+.display_wallet_transaction {
+    width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 2%;
+  background-color: #fff;
+  margin-top: 4%;
+  margin-bottom: 25px;
+}
+.amount_status {
+  border: 2px solid red;
+  padding: 5px 20px;
+  background-color: red;
+  color: #fff;
+}
+.rsn_deduction_add_amt{
+    letter-spacing: 1px;
+    font-size: 18px;
+    color: red;
+}
+.amount_display{
+    font-size: 18px;
+}

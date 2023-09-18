@@ -38,7 +38,22 @@ td{
     padding: 8px;
     background-color: rgb(198, 223, 246);
 }
-
+.wallet_btn{
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    width: 60%;
+    background-color: rgb(255, 50, 50);
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+.wallet_btn:hover{
+    background-color: red;
+}
 
 /* Media Queary */
 @media screen and (max-width: 1496px) {

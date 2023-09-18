@@ -1,4 +1,4 @@
-textarea{
+.notificationtextarea textarea{
     resize:none;
     overflow-y: scroll;
     margin-left: 50px;

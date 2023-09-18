@@ -10,6 +10,8 @@ import SignIn from "./Components/SignIn/SignIn";
 import ForgetPass from "./Components/ForgetPassword/ForgetPass";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
+import Wallet from "./Pages/Wallet/Wallet";
+import walletDetailes from './Pages/Wallet/WalletModal/Details'
 
 function App() {
   const [userUid, setUserUid] = useState(null);
@@ -47,6 +49,7 @@ function App() {
                 <Route path='/Transaction' element={<Transaction />} />
                 <Route path='/Filter' element={<Filter />} />
                 <Route path='/Banner' element={<Banner />} />
+                <Route path="/wallet" element={<Wallet/>}/>
               </Routes>
             }
           </div>

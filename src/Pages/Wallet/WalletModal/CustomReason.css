@@ -1,0 +1,81 @@
+.custom-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(243, 242, 242, 0.859);
+}
+.custom_details-container {
+  /* right:250px; */
+  left: 320px;
+  bottom: 200px;
+  position: fixed;
+  padding: 10px;
+  background-color: rgba(219, 218, 218, 0.999);
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  width: 60%;
+  /* border: 2px solid green; */
+}
+.custom_close-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+#custom_closemodal-btn {
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#custom_closemodal-btn:hover {
+  color: red;
+}
+
+.custom_user_details {
+  width: 80%;
+  display: flex;
+  padding: 0 8px;
+  justify-content: space-between;
+}
+
+.custom_rsn_modal {
+  width: 100%;
+}
+.custom_rsn_modal textarea {
+  padding: 20px 10px;
+  margin-top: 2%;
+  width: 100%;
+  resize: none;
+  outline: none;
+  font-size: 15px;
+}
+.custom_rsn_modal button {
+  padding: 8px 20px;
+  font-size: 20px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  width: 20%;
+  background-color: rgb(255, 50, 50);
+  outline: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+.custom_rsn_modal button:hover {
+  background-color: red;
+}
+.custom_submit_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px 0;
+}
+.custom_rsn_modal h3{
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0 10px;
+  letter-spacing: 2px;
+}
