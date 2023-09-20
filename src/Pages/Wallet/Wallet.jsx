@@ -1,11 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Wallet.css";
 import WalletModal from "./WalletModal/Details";
 import Loader from "../../Components/Loader/Loader";
+import { getNotes } from "../../API";
+
 const Wallet = () => {
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState(false);
   const closeModal = () => setModal(false);
+
+  const [walletData, setWalletData] = useState([]);
+  const [data, setData] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const response = await getNotes("walletdata");
+      console.log(response);
+      // setStoreOrder(response.data);
+      setWalletData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // SeeDetails
+  const SeeDetails = async (id) => {
+    let newdata = walletData.find((element) => {
+      return element.id === id;
+    });
+    setData(newdata);
+    console.log(newdata);
+    setModal(true);
+    await fetchData();
+    console.log("i am called2");
+  };
+
   return (
     <div className="wallet-container">
       <div className="User-content">
@@ -37,21 +71,28 @@ const Wallet = () => {
                 <th>Wallet Balance</th>
                 <th>Details</th>
               </tr>
-              <tr>
-                <td>15+6+864</td>
-                <td>Rohan</td>
-                <td>User</td>
-                <td>51266</td>
-                <td>
-                  <button className="wallet_btn" onClick={() => setModal(true)}>
-                    See Details
-                  </button>
-                </td>
-              </tr>
+              {walletData.map((item, index) => {
+                return (
+                  <tr>
+                    <td>{item.id}</td>
+                    <td>{item.receivername}</td>
+                    <td>User</td>
+                    <td>{item.amount}</td>
+                    <td>
+                      <button
+                        className="wallet_btn"
+                        onClick={() => SeeDetails(item.id)}
+                      >
+                        See Details
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
-        {modal && <WalletModal  closeModal={() => closeModal()} />}
+        {modal && <WalletModal closeModal={() => closeModal()} setData={data}/>}
       </>
       {/* )} */}
     </div>

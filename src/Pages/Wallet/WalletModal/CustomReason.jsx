@@ -18,13 +18,17 @@ const BannerModal = ({ closeCustomModal }) => {
             />
           </div>
           <div className="custom_rsn_modal">
-        
-              <h3>Create Reason</h3>
-              <textarea name="" id="" cols="20" rows="10" placeholder="Deducted duty started charge"></textarea>
-              <div className="custom_submit_btn">
-
+            <h3>Create Reason</h3>
+            <textarea
+              name=""
+              id=""
+              cols="20"
+              rows="10"
+              placeholder="Deducted duty started charge"
+            ></textarea>
+            <div className="custom_submit_btn">
               <button> Submit </button>
-              </div>
+            </div>
           </div>
         </div>
       </div>
