@@ -21,7 +21,7 @@ const AddCat = ({ closeModal }) => {
     console.log(product, "product name");
     try {
       const response = await fetch(
-        "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/globalCategory/add",
+        "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/globalCategory/update/add",
         {
           method: "POST",
           headers: {

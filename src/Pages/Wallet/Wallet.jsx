@@ -12,6 +12,10 @@ const Wallet = () => {
   const [walletData, setWalletData] = useState([]);
   const [data, setData] = useState(null);
 
+
+  const [wallet, setWallet] = useState([]);
+  // console.log(walletData)
+  // WalletData table
   const fetchData = async () => {
     try {
       const response = await getNotes("walletdata");
@@ -28,17 +32,32 @@ const Wallet = () => {
     fetchData();
   }, []);
 
+  // Wallet Table
+  const fetchWalletData = async () => {
+    try {
+      const response = await getNotes("wallet");
+      setWallet(response.data);
+    } catch (error) {
+      console.error("Error in fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchWalletData();
+  }, []);
+
   // SeeDetails
   const SeeDetails = async (id) => {
-    let newdata = walletData.find((element) => {
+    let newdata = wallet.find((element) => {
       return element.id === id;
     });
     setData(newdata);
     console.log(newdata);
     setModal(true);
     await fetchData();
-    console.log("i am called2");
   };
+
 
   return (
     <div className="wallet-container">
@@ -69,15 +88,17 @@ const Wallet = () => {
                 <th>Name</th>
                 <th>Role</th>
                 <th>Wallet Balance</th>
+                <th>Wallet Id</th>
                 <th>Details</th>
               </tr>
-              {walletData.map((item, index) => {
+              {wallet.map((item, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.receivername}</td>
                     <td>User</td>
-                    <td>{item.amount}</td>
+                    <td>{item.totalamount}</td>
+                    <td>{item.walletid}</td>
                     <td>
                       <button
                         className="wallet_btn"
@@ -92,7 +113,9 @@ const Wallet = () => {
             </tbody>
           </table>
         </div>
-        {modal && <WalletModal closeModal={() => closeModal()} setData={data}/>}
+        {modal && (
+          <WalletModal closeModal={() => closeModal()} setData={data} walletData={walletData}/>
+        )}
       </>
       {/* )} */}
     </div>

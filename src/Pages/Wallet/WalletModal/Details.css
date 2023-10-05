@@ -9,7 +9,7 @@
 .wallet_details-container {
   /* right:250px; */
   left: 320px;
-  bottom: 300px;
+  bottom: 150px;
   position: fixed;
   padding: 10px;
   background-color: rgba(219, 218, 218, 0.999);
@@ -157,4 +157,11 @@
 }
 .amount_display{
     font-size: 18px;
+}
+
+.enrty{
+  border: 2px solid rgb(207, 207, 207);
+  height: 300px;
+  overflow: scroll;
+  margin-top: 20px;
 }

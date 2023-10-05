@@ -7,30 +7,130 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import CallReceivedIcon from "@mui/icons-material/CallReceived";
-const BannerModal = ({ closeModal, setData }) => {
+import { colors } from "@mui/material";
+const BannerModal = ({ closeModal, setData, walletData }) => {
+  console.log(walletData);
   const [modal, setModal] = useState(false);
   const closeCustomModal = () => setModal(false);
 
   const [fetchData, setfetchData] = useState({ ...setData });
-
-  const [walletBalance, setWalletBalance] = useState(fetchData.amount);
+  console.log(walletData);
+  const [walletBalance, setWalletBalance] = useState(fetchData.totalamount);
   const [amountToAdd, setAmountToAdd] = useState("");
   const [amountToDeduct, setAmountToDeduct] = useState("");
+  const [selectedReason, setSelectedReason] = useState("Select Reason");
 
-  const handleAddAmount = () => {
+  // const [amount, setAmount] = useState(false);
+
+  const handleupdate = async () => {
+    try {
+      const response = await fetch(
+        "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/wallet",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            walletid: setData.walletid,
+            totalamount: walletBalance,
+          }),
+        }
+      );
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+
+  // const handleAddAmount = async () => {
+  //   if (amountToAdd) {
+  //     const newBalance = parseFloat(walletBalance) + parseFloat(amountToAdd);
+  //     setWalletBalance(newBalance);
+  //     setAmountToAdd("");
+  //   }
+  //   handleupdate();
+  // };
+
+  const handleAddAmount = async () => {
     if (amountToAdd) {
       const newBalance = parseFloat(walletBalance) + parseFloat(amountToAdd);
       setWalletBalance(newBalance);
       setAmountToAdd("");
+
+      // Send data to the API
+      try {
+        const response = await fetch(
+          "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/walletdata",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: Math.floor(Math.random() * 100),
+              walletid: setData.walletid,
+              TransactionType: "credit",
+              Amount: parseFloat(amountToAdd),
+              SenderName: "xyz",
+              SenderId: "123",
+              ReceiverId: "458",
+              ReceiverName: "abc",
+            }),
+          }
+        );
+        console.log("resp data:  ", response);
+        if (!response.ok) {
+          throw new Error("Failed to add amount to wallet.");
+        }
+      } catch (error) {
+        console.error("Error adding amount to wallet:", error);
+      }
+      // handleupdate();
     }
   };
 
-  const handleDeductAmount = () => {
+  const handleDeductAmount = async () => {
     if (amountToDeduct) {
       const newBalance = walletBalance - parseFloat(amountToDeduct);
       setWalletBalance(newBalance);
       setAmountToDeduct("");
+      // Send data to the API
+      try {
+        const response = await fetch(
+          "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/walletdata",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: Math.floor(Math.random() * 100),
+              walletid: setData.walletid,
+              TransactionType: "debit",
+              Amount: parseFloat(amountToAdd),
+              SenderName: "pqrks",
+              SenderId: "123485",
+              ReceiverId: "71486",
+              ReceiverName: "abchde",
+            }),
+          }
+        );
+        console.log("resp data:  ", response);
+        if (!response.ok) {
+          throw new Error("Failed to add amount to wallet.");
+        }
+      } catch (error) {
+        console.error("Error adding amount to wallet:", error);
+      }
     }
+    // handleupdate();
+  };
+
+  const handleReasonChange = (event) => {
+    setSelectedReason(event.target.value);
   };
 
   return (
@@ -55,7 +155,7 @@ const BannerModal = ({ closeModal, setData }) => {
             </div>
             <div className="wallet_cnt_number">
               <CachedIcon id="refresh_btn" />
-              <h4>{fetchData.id}</h4>
+              <h4>{fetchData.walletid}</h4>
             </div>
           </div>
           <div className="add_wallet_amount">
@@ -67,7 +167,7 @@ const BannerModal = ({ closeModal, setData }) => {
                   onChange={(e) => setAmountToDeduct(e.target.value)}
                 />
                 <RemoveIcon
-                  style={{ margin: "8px 0px 0px 30px", cursor:"pointer" }}
+                  style={{ margin: "8px 0px 0px 30px", cursor: "pointer" }}
                   onClick={handleDeductAmount}
                 />
               </div>
@@ -78,19 +178,24 @@ const BannerModal = ({ closeModal, setData }) => {
                   onChange={(e) => setAmountToAdd(e.target.value)}
                 />
                 <AddIcon
-                  style={{ margin: "8px 0px 0px 30px" , cursor:"pointer"}}
+                  style={{ margin: "8px 0px 0px 30px", cursor: "pointer" }}
                   onClick={handleAddAmount}
                 />
               </div>
             </div>
             <div className="deduction_rsn">
-              <select name="Select Reason" id="">
+              <select
+                name="Select Reason"
+                id=""
+                value={selectedReason}
+                onChange={handleReasonChange}
+              >
                 <option value="Select Reason">Select Reason</option>
-                <option value="Select Reason">
+                <option value="Deducted delivery Cancelled">
                   Deducted delivery Cancelled
                 </option>
-                <option value="Select Reason">
-                  Deducted delivery Cancelled
+                <option value=" Deducted late delivery Charge">
+                  Deducted Late delivery Cancelled
                 </option>
               </select>
             </div>
@@ -98,12 +203,52 @@ const BannerModal = ({ closeModal, setData }) => {
               <button>Submit</button>
             </div>
           </div>
-          <div className="custom_rsn">
+          {/* <div className="custom_rsn">
             <div>
               <button onClick={() => setModal(true)}>Custom Reason</button>
             </div>
+          </div> */}
+          <div className="enrty">
+            {walletData.map((item, index) => {
+              return (
+                <>
+                  <div className="display_wallet_transaction" key={index}>
+                    {item.walletid === fetchData.walletid ? (
+                      <>
+                        {item.transactiontype === "credit" ? (
+                          <>
+                            <div
+                              className="amount_status"
+                              style={{ backgroundColor: "green" }}
+                            >
+                              <CallReceivedIcon />
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="amount_status">
+                              <ArrowOutwardIcon />
+                            </div>
+                          </>
+                        )}
+
+                        <div className="rsn_deduction_add_amt">
+                          <p>{item.transactiontype}</p>
+                        </div>
+
+                        <div className="amount_display">
+                          <p>-25 Rs</p>
+                        </div>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </>
+              );
+            })}
           </div>
-          <div className="display_wallet_transaction">
+          {/* <div className="display_wallet_transaction">
             {fetchData.transactiontype === "Credit" ? (
               <>
                 <div
@@ -116,18 +261,28 @@ const BannerModal = ({ closeModal, setData }) => {
             ) : (
               <>
                 <div className="amount_status">
-                  <ArrowOutwardIcon/>
+                  <ArrowOutwardIcon />
                 </div>
               </>
             )}
+            {walletData.map((item, index) => {
+              return (
+                <>
+                  {item.walletid === fetchData.walletid ? (
+                    <div className="rsn_deduction_add_amt">
+                      <p>{item.transactiontype}</p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
 
-            <div className="rsn_deduction_add_amt">
-              <p>{fetchData.transactiontype}</p>
-            </div>
-            <div className="amount_display">
-              <p>-25 Rs</p>
-            </div>
-          </div>
+                  <div className="amount_display">
+                    <p>-25 Rs</p>
+                  </div>
+                </>
+              );
+            })}
+          </div> */}
         </div>
       </div>
       {modal && <CustomReason closeCustomModal={() => closeCustomModal()} />}
