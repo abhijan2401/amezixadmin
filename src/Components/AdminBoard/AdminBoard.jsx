@@ -137,8 +137,8 @@ const AdminBoard = () => {
             style={{ fontSize: "60px", marginRight: "20px", cursor: "pointer" }}
           />
         </div>
-        <div className="main-content">
-          {active === "Dashboard" && <Dashboard />}
+        <div className="main-content"> 
+          {active === "Dashboard" && <Dashboard setActive={setActive}/>}
           {active === "Categories" && <Categories />}
           {active === "Order" && <Order />}
           {active === "Stores" && <Stores />}

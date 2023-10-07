@@ -12,6 +12,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Wallet from "./Pages/Wallet/Wallet";
 import walletDetailes from './Pages/Wallet/WalletModal/Details'
+import Order from "./Pages/Order/Order";
+import Stores from "./Pages/Stores/Stores";
+import Drivers from "./Pages/Drivers/Drivers";
+import User from "./Pages/Users/User";
 
 function App() {
   const [userUid, setUserUid] = useState(null);
@@ -50,6 +54,10 @@ function App() {
                 <Route path='/Filter' element={<Filter />} />
                 <Route path='/Banner' element={<Banner />} />
                 <Route path="/wallet" element={<Wallet/>}/>
+                <Route path="/Orders" element={<Order/>}/>
+                <Route path="/Stores" element={<Stores/>}/>
+                <Route path="/Divers" element={<Drivers/>}/>
+                <Route path="/Users" element={<User/>}/>
               </Routes>
             }
           </div>

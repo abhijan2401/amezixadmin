@@ -16,9 +16,12 @@ const BannerModal = ({ closeModal, setData, walletData }) => {
   const [fetchData, setfetchData] = useState({ ...setData });
   console.log(walletData);
   const [walletBalance, setWalletBalance] = useState(fetchData.totalamount);
+  console.log("balance",walletBalance)
   const [amountToAdd, setAmountToAdd] = useState("");
   const [amountToDeduct, setAmountToDeduct] = useState("");
   const [selectedReason, setSelectedReason] = useState("Select Reason");
+  const [transactiontype, setTransactiontype] = useState(null);
+  console.log("trans", transactiontype);
 
   // const [amount, setAmount] = useState(false);
 
@@ -33,14 +36,57 @@ const BannerModal = ({ closeModal, setData, walletData }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            walletid: setData.walletid,
-            totalamount: walletBalance,
+            id: setData.id,
+            updateData: {
+              walletid: setData.walletid,
+              totalamount: walletBalance,
+            },
+            tablename: "wallet",
           }),
         }
       );
+      console.log("respo", response)
     } catch (error) {
       console.log("Error", error);
     }
+  };
+
+  const fetchWalletData = async () => {
+    // Send data to the API
+    try {
+      const response = await fetch(
+        "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/walletdata",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: Math.floor(Math.random() * 1000000 + 1),
+            walletid: setData.walletid,
+            TransactionType: transactiontype,
+            Amount: parseFloat(amountToAdd),
+            SenderName: selectedReason,
+            SenderId: "123",
+            ReceiverId: "458",
+            ReceiverName: "abc",
+          }),
+        }
+      );
+      console.log("resp data:  ", response);
+      if (!response.ok) {
+        throw new Error("Failed to add amount to wallet.");
+      }
+    } catch (error) {
+      console.error("Error adding amount to wallet:", error);
+    }
+  };
+
+  const handleSubmit = () => {
+    // fetchWalletData();
+    // handleDeductAmount();
+    handleupdate();
   };
 
   // const handleAddAmount = async () => {
@@ -53,78 +99,84 @@ const BannerModal = ({ closeModal, setData, walletData }) => {
   // };
 
   const handleAddAmount = async () => {
+    setTransactiontype("credit");
     if (amountToAdd) {
       const newBalance = parseFloat(walletBalance) + parseFloat(amountToAdd);
       setWalletBalance(newBalance);
       setAmountToAdd("");
 
+      // fetchWalletData();
+
       // Send data to the API
-      try {
-        const response = await fetch(
-          "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/walletdata",
-          {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              id: Math.floor(Math.random() * 100),
-              walletid: setData.walletid,
-              TransactionType: "credit",
-              Amount: parseFloat(amountToAdd),
-              SenderName: "xyz",
-              SenderId: "123",
-              ReceiverId: "458",
-              ReceiverName: "abc",
-            }),
-          }
-        );
-        console.log("resp data:  ", response);
-        if (!response.ok) {
-          throw new Error("Failed to add amount to wallet.");
-        }
-      } catch (error) {
-        console.error("Error adding amount to wallet:", error);
-      }
+      // try {
+      //   const response = await fetch(
+      //     "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/walletdata",
+      //     {
+      //       method: "POST",
+      //       headers: {
+      //         Accept: "application/json",
+      //         "Content-Type": "application/json",
+      //       },
+      //       body: JSON.stringify({
+      //         id: Math.floor(Math.random() * 100),
+      //         walletid: setData.walletid,
+      //         TransactionType: "credit",
+      //         Amount: parseFloat(amountToAdd),
+      //         SenderName: "xyz",
+      //         SenderId: "123",
+      //         ReceiverId: "458",
+      //         ReceiverName: "abc",
+      //       }),
+      //     }
+      //   );
+      //   console.log("resp data:  ", response);
+      //   if (!response.ok) {
+      //     throw new Error("Failed to add amount to wallet.");
+      //   }
+      // } catch (error) {
+      //   console.error("Error adding amount to wallet:", error);
+      // }
       // handleupdate();
     }
   };
 
   const handleDeductAmount = async () => {
+    setTransactiontype("debit");
     if (amountToDeduct) {
-      const newBalance = walletBalance - parseFloat(amountToDeduct);
+      const newBalance = (walletBalance) - parseFloat(amountToDeduct);
       setWalletBalance(newBalance);
       setAmountToDeduct("");
+
+      // fetchWalletData();
       // Send data to the API
-      try {
-        const response = await fetch(
-          "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/walletdata",
-          {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              id: Math.floor(Math.random() * 100),
-              walletid: setData.walletid,
-              TransactionType: "debit",
-              Amount: parseFloat(amountToAdd),
-              SenderName: "pqrks",
-              SenderId: "123485",
-              ReceiverId: "71486",
-              ReceiverName: "abchde",
-            }),
-          }
-        );
-        console.log("resp data:  ", response);
-        if (!response.ok) {
-          throw new Error("Failed to add amount to wallet.");
-        }
-      } catch (error) {
-        console.error("Error adding amount to wallet:", error);
-      }
+      // try {
+      //   const response = await fetch(
+      //     "http://ec2-3-108-56-128.ap-south-1.compute.amazonaws.com:8001/walletdata",
+      //     {
+      //       method: "POST",
+      //       headers: {
+      //         Accept: "application/json",
+      //         "Content-Type": "application/json",
+      //       },
+      //       body: JSON.stringify({
+      //         id: Math.floor(Math.random() * 100),
+      //         walletid: setData.walletid,
+      //         TransactionType: "debit",
+      //         Amount: parseFloat(amountToAdd),
+      //         SenderName: "pqrks",
+      //         SenderId: "123485",
+      //         ReceiverId: "71486",
+      //         ReceiverName: "abchde",
+      //       }),
+      //     }
+      //   );
+      //   console.log("resp data:  ", response);
+      //   if (!response.ok) {
+      //     throw new Error("Failed to add amount to wallet.");
+      //   }
+      // } catch (error) {
+      //   console.error("Error adding amount to wallet:", error);
+      // }
     }
     // handleupdate();
   };
@@ -200,7 +252,7 @@ const BannerModal = ({ closeModal, setData, walletData }) => {
               </select>
             </div>
             <div className="rsn_btn">
-              <button>Submit</button>
+              <button onClick={handleSubmit}>Submit</button>
             </div>
           </div>
           {/* <div className="custom_rsn">

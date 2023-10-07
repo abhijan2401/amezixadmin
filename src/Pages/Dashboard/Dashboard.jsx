@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './Dashboard.css'
 import { getNotes } from "../../API";
 import Loader from "../../Components/Loader/Loader";
 import Filter from '../../Components/Filter/Filter'
 
-const Dashboard = () => {
+const Dashboard = ({setActive}) => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [storeorder, setStoreOrder] = useState([]);
   const [users, setUsers] = useState([]);
@@ -81,13 +83,13 @@ const Dashboard = () => {
     <div className='dashboard-container'>
       {/* <div className="categoriefilter"><Filter/></div> */}
         <div className="dashboard-content">
-          <div className="active_order"><h4>Active Order</h4><p>{storeorder_list}</p></div>
+          <div className="active_order" onClick={()=>setActive('Order')}><h4>Active Order</h4><p>{storeorder_list}</p></div>
           {/* <div className="active_order"><h4>Total Sales</h4><p>45000</p></div> */}
-          <div className="active_order"><h4>Active User</h4><p>{users_list}</p></div>
+          <div className="active_order" onClick={()=>setActive('User')}><h4>Active User</h4><p>{users_list}</p></div>
           {/* <div className="active_order"><h4>New User</h4><p>45</p></div> */}
-          <div className="active_order"><h4>Active Stores</h4><p>{store_list}</p></div>
+          <div className="active_order" onClick={()=>setActive('Stores')}><h4>Active Stores</h4><p>{store_list}</p></div>
           {/* <div className="active_order"><h4>Cancle Order</h4><p>75</p></div> */}
-          <div className="active_order"><h4>Active Drivers</h4><p>{drivers_list}</p></div>
+          <div className="active_order" onClick={()=>setActive('Drivers')}><h4>Active Drivers</h4><p>{drivers_list}</p></div>
           {/* <div className="active_order"><h4>Exchange Order</h4><p>85</p></div> */}
           {/* <div className="active_order"><h4>Total Complete Order</h4><p>15</p></div> */}
         </div>
