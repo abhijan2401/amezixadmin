@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/amezixadmin/static/css/main.a0e2aefa.css",
-    "main.js": "/amezixadmin/static/js/main.a2e7e77e.js",
-    "static/media/banner.png": "/amezixadmin/static/media/banner.6e3aeab74273e73bdd58.png",
-    "static/media/pr.jfif": "/amezixadmin/static/media/pr.7eaf9ae7c1a10b2e0495.jfif",
-    "index.html": "/amezixadmin/index.html",
-    "static/media/add.svg": "/amezixadmin/static/media/add.4ce077e837c37e37af764ec9c05749bb.svg",
-    "main.a0e2aefa.css.map": "/amezixadmin/static/css/main.a0e2aefa.css.map",
-    "main.a2e7e77e.js.map": "/amezixadmin/static/js/main.a2e7e77e.js.map"
+    "main.css": "/static/css/main.2075b733.css",
+    "main.js": "/static/js/main.be7d9339.js",
+    "static/media/banner.png": "/static/media/banner.6e3aeab74273e73bdd58.png",
+    "static/media/pr.jfif": "/static/media/pr.7eaf9ae7c1a10b2e0495.jfif",
+    "index.html": "/index.html",
+    "static/media/add.svg": "/static/media/add.4ce077e837c37e37af764ec9c05749bb.svg",
+    "main.2075b733.css.map": "/static/css/main.2075b733.css.map",
+    "main.be7d9339.js.map": "/static/js/main.be7d9339.js.map"
   },
   "entrypoints": [
-    "static/css/main.a0e2aefa.css",
-    "static/js/main.a2e7e77e.js"
+    "static/css/main.2075b733.css",
+    "static/js/main.be7d9339.js"
   ]
 }
